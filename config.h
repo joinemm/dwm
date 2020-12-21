@@ -43,6 +43,9 @@ static Sp scratchpads[] = {
 /* staticstatus */
 static const int statmonval = 0;
 
+/* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
+static const int user_bh = 32;
+
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
