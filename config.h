@@ -60,14 +60,17 @@ static const Rule rules[] = {
 };
 
 /* layout(s) */
-static float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
+static float mfact     = 0.5; /* factor of master area size [0.05..0.95] */
 static int nmaster     = 1;    /* number of clients in master area */
 static int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
 #define FORCE_VSPLIT 1  /* nrowgrid layout: force two clients to always split vertically */
 #include "vanitygaps.c"
+
+/* first layout is the default */
 static const Layout layouts[] = {
 	/* symbol     arrange function */
- 	{ "[]=",	tile },			/* Default: Master on left, slaves on right */
+	{ "|M|",	centeredmaster },		/* Master in middle, slaves on sides */
+ 	
 	{ "TTT",	bstack },		/* Master on top, slaves on bottom */
 
 	{ "[@]",	spiral },		/* Fibonacci spiral */
@@ -76,7 +79,7 @@ static const Layout layouts[] = {
 	{ "[D]",	deck },			/* Master on left, slaves in monocle-like mode on right */
  	{ "[M]",	monocle },		/* All windows on top of eachother */
 
-	{ "|M|",	centeredmaster },		/* Master in middle, slaves on sides */
+	{ "[]=",	tile },			/* Default: Master on left, slaves on right */
 	{ ">M>",	centeredfloatingmaster },	/* Same but master floats */
 
 	{ "><>",	NULL },			/* no layout function means floating behavior */
@@ -158,13 +161,13 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,		XK_w,			spawn,			SHCMD(TERMINAL " -e sudo nmtui") },
 	{ MODKEY,				XK_e,			spawn,			SHCMD(TERMINAL " -e aerc") },
 	{ MODKEY|ShiftMask,		XK_r,			spawn,			SHCMD(TERMINAL " -e htop") },
-	{ MODKEY,				XK_t,			setlayout,		{.v = &layouts[0]} }, /* tile */
+	{ MODKEY,				XK_t,			setlayout,		{.v = &layouts[6]} }, /* tile */
 	{ MODKEY|ShiftMask,		XK_t,			setlayout,		{.v = &layouts[1]} }, /* bstack */
 	{ MODKEY,				XK_y,			setlayout,		{.v = &layouts[2]} }, /* spiral */
 	{ MODKEY|ShiftMask,		XK_y,			setlayout,		{.v = &layouts[3]} }, /* dwindle */
 	{ MODKEY,				XK_u,			setlayout,		{.v = &layouts[4]} }, /* deck */
 	{ MODKEY|ShiftMask,		XK_u,			setlayout,		{.v = &layouts[5]} }, /* monocle */
-	{ MODKEY,				XK_i,			setlayout,		{.v = &layouts[6]} }, /* centeredmaster */
+	{ MODKEY,				XK_i,			setlayout,		{.v = &layouts[0]} }, /* centeredmaster */
 	{ MODKEY|ShiftMask,		XK_i,			setlayout,		{.v = &layouts[7]} }, /* centeredfloatingmaster */
 	{ MODKEY,				XK_m,			incnmaster,     {.i = +1 } },
 	{ MODKEY|ShiftMask,		XK_m,			incnmaster,     {.i = -1 } },
@@ -172,7 +175,7 @@ static Key keys[] = {
 	{ MODKEY,				XK_a,			togglegaps,		{0} },
 	{ MODKEY|ShiftMask,		XK_a,			defaultgaps,	{0} },
 	{ MODKEY,				XK_s,			togglesticky,	{0} },
-	{ MODKEY,				XK_space,		spawn,          SHCMD("rofi -show run") },
+	{ MODKEY,				XK_space,		spawn,          SHCMD("rofi -show drun") },
 	{ MODKEY|ShiftMask,		XK_f,			togglefullscr,	{0} },
 	{ MODKEY,				XK_g,			shiftview,		{ .i = -1 } },
 	{ MODKEY|ShiftMask,		XK_g,			shifttag,		{ .i = -1 } },
