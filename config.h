@@ -57,6 +57,7 @@ static const Rule rules[] = {
 	/* class    instance      title       	 tags mask    isfloating   isterminal  noswallow  monitor */
 	{ "Steam",     NULL,       NULL,			0,            1,           -1 },
 	{ "Steam",     NULL,       "Steam",			0,            0,           -1 },
+	{ "Peek",	   NULL,       "Peek",          0,            1,           -1 },
 };
 
 /* layout(s) */
