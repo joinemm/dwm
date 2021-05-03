@@ -73,21 +73,20 @@ static int resizehints = 1;		/* 1 means respect size hints in tiled resizals */
 
 /* first layout is the default */
 static const Layout layouts[] = {
-	/* symbol     arrange function */
-	{ "|M|",	centeredmaster },		/* Master in middle, slaves on sides */
- 	
-	{ "TTT",	bstack },		/* Master on top, slaves on bottom */
+	/* symbol   arrange function */
+	{ "|M|",	centeredmaster },			/* Master in middle, slaves on sides */
+	{ "TTT",	bstack },					/* Master on top, slaves on bottom */
 
-	{ "[@]",	spiral },		/* Fibonacci spiral */
-	{ "[\\]",	dwindle },		/* Decreasing in size right and leftward */
+	{ "[@]",	spiral },					/* Fibonacci spiral */
+	{ "[\\]",	dwindle },					/* Decreasing in size right and leftward */
 
-	{ "[D]",	deck },			/* Master on left, slaves in monocle-like mode on right */
- 	{ "[M]",	monocle },		/* All windows on top of eachother */
+	{ "[D]",	deck },						/* Master on left, slaves in monocle-like mode on right */
+ 	{ "[M]",	monocle },					/* All windows on top of eachother */
 
-	{ "[]=",	tile },			/* Default: Master on left, slaves on right */
-	{ ">M>",	centeredfloatingmaster },	/* Same but master floats */
+	{ "[]=",	tile },						/* Default: Master on left, slaves on right */
+	{ ">M>",	centeredfloatingmaster },	/* Same as centeredmaster but master floats */
 
-	{ "><>",	NULL },			/* no layout function means floating behavior */
+	{ "><>",	NULL },                     /* no layout function means floating behavior */
 	{ NULL,		NULL },
 };
 
@@ -115,19 +114,19 @@ static const char *termcmd[]  = { TERMINAL, NULL };
 
 /* Xresources to load at startup */
 ResourcePref resources[] = {
-	{ "color0",			STRING,	&normbordercolor },
-	{ "color4",			STRING,	&selbordercolor },
-	{ "background",		STRING,	&normbgcolor },
-	{ "foreground",		STRING,	&normfgcolor },
-	{ "foreground",		STRING,	&selfgcolor },
-	{ "color4",			STRING,	&selbgcolor },
+	{ "color0",			STRING,	 &normbordercolor },
+	{ "color4",			STRING,	 &selbordercolor },
+	{ "background",		STRING,	 &normbgcolor },
+	{ "foreground",		STRING,	 &normfgcolor },
+	{ "foreground",		STRING,	 &selfgcolor },
+	{ "color4",			STRING,  &selbgcolor },
 	{ "borderpx",		INTEGER, &borderpx },
 	{ "snap",			INTEGER, &snap },
 	{ "showbar",		INTEGER, &showbar },
 	{ "topbar",			INTEGER, &topbar },
 	{ "nmaster",		INTEGER, &nmaster },
 	{ "resizehints",	INTEGER, &resizehints },
-	{ "mfact",			FLOAT,	&mfact },
+	{ "mfact",			FLOAT,	 &mfact },
 	{ "gappih",			INTEGER, &gappih },
 	{ "gappiv",			INTEGER, &gappiv },
 	{ "gappoh",			INTEGER, &gappoh },
@@ -158,7 +157,7 @@ static Key keys[] = {
 	{ MODKEY,				XK_w,			    spawn,			SHCMD("$BROWSER") },
 	{ MODKEY|ShiftMask,		XK_w,			    spawn,			SHCMD(TERMINAL " -e sudo nmtui") },
 	{ MODKEY,				XK_e,			    spawn,			SHCMD(TERMINAL " -e aerc") },
-	{ MODKEY|ShiftMask,		XK_r,			    spawn,			SHCMD(TERMINAL " -e htop") },
+	{ MODKEY|ShiftMask,		XK_r,			    spawn,			SHCMD(TERMINAL " -e gotop") },
 	{ MODKEY,				XK_t,			    setlayout,		{.v = &layouts[6]} }, /* tile */
 	{ MODKEY|ShiftMask,		XK_t,			    setlayout,		{.v = &layouts[1]} }, /* bstack */
 	{ MODKEY,				XK_y,			    setlayout,		{.v = &layouts[2]} }, /* spiral */
