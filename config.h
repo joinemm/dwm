@@ -154,10 +154,16 @@ static Key keys[] = {
 	{ MODKEY,				XK_0,			    view,			{.ui = ~0 } },
 	{ MODKEY,				XK_q,			    killclient,		{0} },
 	{ MODKEY|ShiftMask,		XK_q,			    quit,			{0} },
-	{ MODKEY,				XK_w,			    spawn,			SHCMD("$BROWSER") },
+	{ MODKEY,				XK_w,			    spawn,			SHCMD("firefox") },
+	{ MODKEY,				XK_r,			    spawn,			SHCMD("spacefm") },
 	{ MODKEY|ShiftMask,		XK_w,			    spawn,			SHCMD(TERMINAL " -e sudo nmtui") },
 	{ MODKEY,				XK_e,			    spawn,			SHCMD(TERMINAL " -e aerc") },
 	{ MODKEY|ShiftMask,		XK_r,			    spawn,			SHCMD(TERMINAL " -e gotop") },
+	{ MODKEY,				XK_space,		    spawn,          SHCMD("rofi -show drun") },
+	{ MODKEY|ShiftMask,		XK_s,				spawn,          SHCMD("flameshot gui -p ~/screenshots") },
+	{ 0,					XK_Print,			spawn,          SHCMD("flameshot gui -p ~/screenshots") },
+	{ MODKEY,				XK_o,				spawn,          SHCMD("~/bin/toggle-kb-layout us fi") },
+	{ MODKEY,				XK_c,				spawn,          SHCMD("~/bin/color") },
 	{ MODKEY,				XK_t,			    setlayout,		{.v = &layouts[6]} }, /* tile */
 	{ MODKEY|ShiftMask,		XK_t,			    setlayout,		{.v = &layouts[1]} }, /* bstack */
 	{ MODKEY,				XK_y,			    setlayout,		{.v = &layouts[2]} }, /* spiral */
@@ -177,7 +183,6 @@ static Key keys[] = {
 	{ MODKEY,				XK_l,			    setmfact,		{.f = +0.05} },
 	{ MODKEY,				XK_f,			    zoom,			{0} },
 	{ MODKEY|ShiftMask,		XK_f,			    togglefullscr,	{0} },
-	{ MODKEY,				XK_space,		    spawn,          SHCMD("rofi -show drun") },
 	{ MODKEY,				XK_Tab,			    view,			{0} },
 	{ MODKEY,				XK_semicolon,	    shiftview,		{ .i = 1 } },
 	{ MODKEY|ShiftMask,		XK_semicolon,	    shifttag,		{ .i = 1 } },
@@ -192,6 +197,13 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,		XK_bracketleft,	    tagmon,			{.i = -1 } },
 	{ MODKEY|ShiftMask,		XK_bracketright,    tagmon,			{.i = +1 } },
 	{ MODKEY|ShiftMask,		XK_space,		    togglefloating,	{0} },
+	{ MODKEY,				XK_slash,			spawn,          SHCMD("playerctl play-pause") },
+	{ MODKEY,				XK_minus,			spawn,          SHCMD("playerctl play-pause") },
+	{ MODKEY,				XK_comma,			spawn,          SHCMD("playerctl previous") },
+	{ MODKEY,				XK_period,			spawn,          SHCMD("playerctl next") },
+	{ 0,                    XF86XK_AudioPlay,	spawn,			SHCMD("playerctl play-pause") },
+	{ 0,					XF86XK_AudioPrev,   spawn,			SHCMD("playerctl previous") },
+	{ 0,                    XF86XK_AudioNext,	spawn,			SHCMD("playerctl next") },
 };
 
 /* button definitions */
