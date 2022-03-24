@@ -114,8 +114,8 @@ static const char *termcmd[]  = { TERMINAL, NULL };
 
 /* Xresources to load at startup */
 ResourcePref resources[] = {
-	{ "color0",			STRING,	 &normbordercolor },
-	{ "color4",			STRING,	 &selbordercolor },
+	{ "bordercolor",	STRING,	 &normbordercolor },
+	{ "selbordercolor",	STRING,	 &selbordercolor },
 	{ "background",		STRING,	 &normbgcolor },
 	{ "foreground",		STRING,	 &normfgcolor },
 	{ "foreground",		STRING,	 &selfgcolor },
@@ -155,9 +155,7 @@ static Key keys[] = {
 	{ MODKEY,				XK_q,			    killclient,		{0} },
 	{ MODKEY|ShiftMask,		XK_q,			    quit,			{0} },
 	{ MODKEY,				XK_w,			    spawn,			SHCMD("firefox") },
-	{ MODKEY,				XK_r,			    spawn,			SHCMD("thunar") },
-	{ MODKEY|ShiftMask,		XK_w,			    spawn,			SHCMD(TERMINAL " -e sudo nmtui") },
-	{ MODKEY,				XK_e,			    spawn,			SHCMD(TERMINAL " -e aerc") },
+	{ MODKEY,				XK_r,			    spawn,			SHCMD(TERMINAL " -e lfub") },
 	{ MODKEY|ShiftMask,		XK_r,			    spawn,			SHCMD(TERMINAL " -e gotop") },
 	{ MODKEY,				XK_space,		    spawn,          SHCMD("rofi -show drun") },
 	{ MODKEY|ShiftMask,		XK_s,				spawn,          SHCMD("flameshot gui -p ~/screenshots") },
