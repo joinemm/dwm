@@ -21,7 +21,7 @@ static int smartgaps            = 0;        /* 1 means no outer gap when there i
 static int showbar              = 1;        /* 0 means no bar */
 static int topbar               = 1;        /* 0 means bottom bar */
 static char *fonts[]            = {
-	"JetBrains Mono:size=12",
+	"monospace:size=12",
 	"Twemoji:size=12",
 	"Feather Icons:size=12",
 };
@@ -160,8 +160,9 @@ static Key keys[] = {
 	{ MODKEY,				XK_q,			    killclient,		{0} },
 	{ MODKEY|ShiftMask,		XK_q,			    quit,			{0} },
 	{ MODKEY,				XK_w,			    spawn,			SHCMD("firefox") },
+	{ MODKEY,				XK_e,			    spawn,			SHCMD("rofimoji") },
 	{ MODKEY,				XK_r,			    spawn,			SHCMD(TERMINAL " -e lfub") },
-	{ MODKEY|ShiftMask,		XK_r,			    spawn,			SHCMD(TERMINAL " -e btm") },
+	{ MODKEY|ShiftMask,		XK_r,			    spawn,			SHCMD("nemo") },
 	{ MODKEY,				XK_space,		    spawn,          SHCMD("rofi -show drun") },
 	{ MODKEY|ShiftMask,		XK_s,				spawn,          SHCMD("flameshot gui") },
 	{ 0,					XK_Print,			spawn,          SHCMD("flameshot gui") },
@@ -179,8 +180,9 @@ static Key keys[] = {
 	{ 0,                    XF86XK_AudioMute,	spawn,			SHCMD("audio-control mute") },
 	{ 0,                    XF86XK_AudioRaiseVolume,	spawn,	SHCMD("audio-control up 1%") },
 	{ 0,                    XF86XK_AudioLowerVolume,	spawn,	SHCMD("audio-control down 1%") },
-	{ 0,					XF86XK_MonBrightnessUp,		spawn,	SHCMD("sudo light -A 10%; pkill -RTMIN+11 dwmblocks") },
-	{ 0,					XF86XK_MonBrightnessDown,	spawn,	SHCMD("sudo light -U 10%; pkill -RTMIN+11 dwmblocks") },
+	{ 0,					XF86XK_MonBrightnessUp,		spawn,	SHCMD("sudo light -Ar 15; pkill -RTMIN+11 dwmblocks") },
+	{ 0,					XF86XK_MonBrightnessDown,	spawn,	SHCMD("sudo light -Ur 15; pkill -RTMIN+11 dwmblocks") },
+	{ 0,					XF86XK_Calculator,	spawn,	        SHCMD("rofi -show calc -modi calc -no-show-match -no-sort") },
 	{ MODKEY,				XK_t,			    setlayout,		{.v = &layouts[6]} }, /* tile */
 	{ MODKEY|ShiftMask,		XK_t,			    setlayout,		{.v = &layouts[1]} }, /* bstack */
 	{ MODKEY,				XK_y,			    setlayout,		{.v = &layouts[2]} }, /* spiral */
@@ -209,7 +211,7 @@ static Key keys[] = {
 	{ MODKEY,				XK_z,			    incrgaps,		{.i = +3 } },
 	{ MODKEY,				XK_x,			    incrgaps,		{.i = -3 } },
 	{ MODKEY|ShiftMask,		XK_b,			    togglebar,		{0} },
-	{ MODKEY,				XK_bracketleft,	    focusmon,		{.i = -1 } }, 
+	{ MODKEY,				XK_bracketleft,	    focusmon,		{.i = -1 } },
 	{ MODKEY,				XK_bracketright,    focusmon,		{.i = +1 } },
 	{ MODKEY|ShiftMask,		XK_bracketleft,	    tagmon,			{.i = -1 } },
 	{ MODKEY|ShiftMask,		XK_bracketright,    tagmon,			{.i = +1 } },
