@@ -22,3 +22,18 @@ This is suckless, buddy, the source code is the documentation! Check out [config
 ## Please install `libxft-bgra`!
 
 This build of dwm does not block color emoji in the status/info bar, so you must install [libxft-bgra](https://aur.archlinux.org/packages/libxft-bgra/) from the AUR, which fixes a libxft color emoji rendering problem, otherwise dwm will crash upon trying to render one.
+
+## Installing
+
+```
+$ sudo make clean install
+```
+
+## Usage
+Add this to your `.xinitrc` and dwm will start with X.
+You can omit the log file redirection but it's helpful to diagnose issues with keybindings.
+```bash
+while true; do
+  dwm 2> ~/.dwm.log
+done
+```
