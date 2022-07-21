@@ -724,6 +724,8 @@ clientmessage(XEvent *e)
 			/* reuse tags field as mapped status */
 			c->tags = 1;
 			updatesizehints(c);
+			XClassHint ch = {"dwmsystray", "dwmsystray"};
+			XSetClassHint(dpy, c->win, &ch);
 			updatesystrayicongeom(c, wa.width, wa.height);
 			XAddToSaveSet(dpy, c->win);
 			XSelectInput(dpy, c->win, StructureNotifyMask | PropertyChangeMask | ResizeRedirectMask);
