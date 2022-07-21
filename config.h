@@ -79,8 +79,8 @@ static int resizehints = 1;		/* 1 means respect size hints in tiled resizals */
 /* first layout is the default */
 static const Layout layouts[] = {
 	/* symbol   arrange function */
-	{ "|M|",	centeredmaster },			/* Master in middle, slaves on sides */
-	{ "TTT",	bstack },					/* Master on top, slaves on bottom */
+	{ "[]=",	tile },						/* Default: Master on left, slaves on right */
+	{ "[B]",	bstack },					/* Master on top, slaves on bottom */
 
 	{ "[@]",	spiral },					/* Fibonacci spiral */
 	{ "[\\]",	dwindle },					/* Decreasing in size right and leftward */
@@ -88,7 +88,7 @@ static const Layout layouts[] = {
 	{ "[D]",	deck },						/* Master on left, slaves in monocle-like mode on right */
  	{ "[M]",	monocle },					/* All windows on top of eachother */
 
-	{ "[]=",	tile },						/* Default: Master on left, slaves on right */
+	{ "[|M|]",	centeredmaster },			/* Master in middle, slaves on sides */
 	{ ">M>",	centeredfloatingmaster },	/* Same as centeredmaster but master floats */
 
 	{ "><>",	NULL },                     /* no layout function means floating behavior */
@@ -124,7 +124,7 @@ ResourcePref resources[] = {
 	{ "background",		STRING,	 &normbgcolor },
 	{ "foreground",		STRING,	 &normfgcolor },
 	{ "foreground",		STRING,	 &selfgcolor },
-	{ "color4",			STRING,  &selbgcolor },
+	{ "background",		STRING,  &selbgcolor },
 	{ "borderpx",		INTEGER, &borderpx },
 	{ "snap",			INTEGER, &snap },
 	{ "showbar",		INTEGER, &showbar },
@@ -183,21 +183,20 @@ static Key keys[] = {
 	{ 0,					XF86XK_MonBrightnessUp,		spawn,	SHCMD("sudo light -Ar 15; pkill -RTMIN+11 dwmblocks") },
 	{ 0,					XF86XK_MonBrightnessDown,	spawn,	SHCMD("sudo light -Ur 15; pkill -RTMIN+11 dwmblocks") },
 	{ 0,					XF86XK_Calculator,	spawn,	        SHCMD("rofi -show calc -modi calc -no-show-match -no-sort") },
-	{ MODKEY,				XK_t,			    setlayout,		{.v = &layouts[6]} }, /* tile */
+	{ MODKEY,				XK_t,			    setlayout,		{.v = &layouts[0]} }, /* tile */
 	{ MODKEY|ShiftMask,		XK_t,			    setlayout,		{.v = &layouts[1]} }, /* bstack */
 	{ MODKEY,				XK_y,			    setlayout,		{.v = &layouts[2]} }, /* spiral */
 	{ MODKEY|ShiftMask,		XK_y,			    setlayout,		{.v = &layouts[3]} }, /* dwindle */
 	{ MODKEY,				XK_u,			    setlayout,		{.v = &layouts[4]} }, /* deck */
 	{ MODKEY|ShiftMask,		XK_u,			    setlayout,		{.v = &layouts[5]} }, /* monocle */
-	{ MODKEY,				XK_i,			    setlayout,		{.v = &layouts[0]} }, /* centeredmaster */
+	{ MODKEY,				XK_i,			    setlayout,		{.v = &layouts[6]} }, /* centeredmaster */
 	{ MODKEY|ShiftMask,		XK_i,			    setlayout,		{.v = &layouts[7]} }, /* centeredfloatingmaster */
+	{ MODKEY|ShiftMask,		XK_o,			    setlayout,		{.v = &layouts[8]} }, /* floating */
 	{ MODKEY,				XK_m,			    incnmaster,     {.i = +1 } },
 	{ MODKEY|ShiftMask,		XK_m,			    incnmaster,     {.i = -1 } },
-	{ MODKEY,				XK_a,			    togglegaps,		{0} },
-	{ MODKEY|ShiftMask,		XK_a,			    defaultgaps,	{0} },
+	{ MODKEY,				XK_g,			    togglegaps,		{0} },
+	{ MODKEY|ShiftMask,		XK_g,			    defaultgaps,	{0} },
 	{ MODKEY,				XK_s,			    togglesticky,	{0} },
-	{ MODKEY,				XK_g,			    shiftview,		{ .i = -1 } },
-	{ MODKEY|ShiftMask,		XK_g,			    shifttag,		{ .i = -1 } },
 	{ MODKEY|ShiftMask,		XK_h,			    setmfact,		{.f = -0.05} },
 	{ MODKEY|ShiftMask,		XK_l,			    setmfact,		{.f = +0.05} },
 	{ MODKEY,				XK_f,			    zoom,			{0} },
@@ -205,9 +204,9 @@ static Key keys[] = {
 	{ MODKEY,				XK_Tab,			    view,			{0} },
 	{ MODKEY,				XK_semicolon,	    shiftview,		{ .i = 1 } },
 	{ MODKEY|ShiftMask,		XK_semicolon,	    shifttag,		{ .i = 1 } },
-	{ MODKEY,				XK_apostrophe,	    togglescratch,	{.ui = 1} },
+	{ MODKEY,				XK_apostrophe,	    shiftview,		{ .i = -1 } },
+	{ MODKEY|ShiftMask,		XK_apostrophe,	    shifttag,		{ .i = -1 } },
 	{ MODKEY,				XK_Return,		    spawn,			{.v = termcmd } },
-	{ MODKEY|ShiftMask,		XK_Return,		    togglescratch,	{.ui = 0} },
 	{ MODKEY,				XK_z,			    incrgaps,		{.i = +3 } },
 	{ MODKEY,				XK_x,			    incrgaps,		{.i = -3 } },
 	{ MODKEY|ShiftMask,		XK_b,			    togglebar,		{0} },
