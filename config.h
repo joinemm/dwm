@@ -41,7 +41,7 @@ typedef struct {
 	const char *name;
 	const void *cmd;
 } Sp;
-const char *spcmd1[] = {TERMINAL, "-n", "spterm", "-g", "120x34", NULL };
+const char *spcmd1[] = {TERMINAL, "-e", "htop", NULL };
 const char *spcmd2[] = {TERMINAL, "-n", "spcalc", "-f", "monospace:size=16", "-g", "50x20", "-e", "bc", "-lq", NULL };
 static Sp scratchpads[] = {
 	/* name         cmd  */
@@ -124,7 +124,7 @@ ResourcePref resources[] = {
 	{ "background",		STRING,	 &normbgcolor },
 	{ "foreground",		STRING,	 &normfgcolor },
 	{ "foreground",		STRING,	 &selfgcolor },
-	{ "background",		STRING,  &selbgcolor },
+	{ "selbgcolor",		STRING,  &selbgcolor },
 	{ "borderpx",		INTEGER, &borderpx },
 	{ "snap",			INTEGER, &snap },
 	{ "showbar",		INTEGER, &showbar },
@@ -207,6 +207,7 @@ static Key keys[] = {
 	{ MODKEY,				XK_apostrophe,	    shiftview,		{ .i = -1 } },
 	{ MODKEY|ShiftMask,		XK_apostrophe,	    shifttag,		{ .i = -1 } },
 	{ MODKEY,				XK_Return,		    spawn,			{.v = termcmd } },
+	{ MODKEY|ShiftMask,		XK_Return,		    togglescratch,	{.ui = 0 } },
 	{ MODKEY,				XK_z,			    incrgaps,		{.i = +3 } },
 	{ MODKEY,				XK_x,			    incrgaps,		{.i = -3 } },
 	{ MODKEY|ShiftMask,		XK_b,			    togglebar,		{0} },
