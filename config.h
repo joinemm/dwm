@@ -41,12 +41,10 @@ typedef struct {
 	const char *name;
 	const void *cmd;
 } Sp;
-const char *spcmd1[] = {TERMINAL, "-e", "htop", NULL };
-const char *spcmd2[] = {TERMINAL, "-n", "spcalc", "-f", "monospace:size=16", "-g", "50x20", "-e", "bc", "-lq", NULL };
+const char *spcmd1[] = {TERMINAL, "--class=FloatingTerminal,FloatingTerminal", NULL };
 static Sp scratchpads[] = {
 	/* name         cmd  */
 	{"spterm",      spcmd1},
-	{"spcalc",      spcmd2},
 };
 
 /* staticstatus */
@@ -67,6 +65,7 @@ static const Rule rules[] = {
 	{ "Steam",		NULL,       NULL,		0,          1,          1,          -1 },
 	{ "Steam",		NULL,       "Steam",	0,          0,          0,          -1 },
 	{ "Peek",		NULL,		"Peek",     0,          1,          1,          -1 },
+	{ "FloatingTerminal",NULL,	NULL,		0,          1,          1,          1 },
 };
 
 /* layout(s) */
