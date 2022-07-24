@@ -158,7 +158,7 @@ static Key keys[] = {
 	{ MODKEY,				XK_0,			    view,			{.ui = ~0 } },
 	{ MODKEY,				XK_q,			    killclient,		{0} },
 	{ MODKEY|ShiftMask,		XK_q,			    quit,			{0} },
-	{ MODKEY,				XK_w,			    spawn,			SHCMD("gtk-lauch $(xdg-settings get default-web-browser)") },
+	{ MODKEY,				XK_w,			    spawn,			SHCMD("gtk-launch $(xdg-settings get default-web-browser)") },
 	{ MODKEY|ShiftMask,		XK_w,			    spawn,			SHCMD("rofi-wifi") },
 	{ MODKEY,				XK_e,			    spawn,			SHCMD("rofimoji") },
 	{ MODKEY,				XK_r,			    spawn,			SHCMD(TERMINAL " -e lfub") },
