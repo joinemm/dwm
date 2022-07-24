@@ -158,7 +158,8 @@ static Key keys[] = {
 	{ MODKEY,				XK_0,			    view,			{.ui = ~0 } },
 	{ MODKEY,				XK_q,			    killclient,		{0} },
 	{ MODKEY|ShiftMask,		XK_q,			    quit,			{0} },
-	{ MODKEY,				XK_w,			    spawn,			SHCMD("firefox") },
+	{ MODKEY,				XK_w,			    spawn,			SHCMD("gtk-lauch $(xdg-settings get default-web-browser)") },
+	{ MODKEY|ShiftMask,		XK_w,			    spawn,			SHCMD("rofi-wifi") },
 	{ MODKEY,				XK_e,			    spawn,			SHCMD("rofimoji") },
 	{ MODKEY,				XK_r,			    spawn,			SHCMD(TERMINAL " -e lfub") },
 	{ MODKEY|ShiftMask,		XK_r,			    spawn,			SHCMD("nemo") },
@@ -169,7 +170,7 @@ static Key keys[] = {
 	{ MODKEY,				XK_p,				spawn,          SHCMD("rofi-screencast") },
 	{ MODKEY|ShiftMask,		XK_p,				spawn,          SHCMD("rofi-screencast -s") },
 	{ MODKEY,				XK_c,				spawn,          SHCMD("color") },
-	{ MODKEY,				XK_b,				spawn,          SHCMD("bt") },
+	{ MODKEY,				XK_b,				spawn,          SHCMD("rofi-bluetooth") },
 	{ MODKEY,				XK_l,				spawn,          SHCMD("betterlockscreen -l") },
 	{ MODKEY,				XK_slash,			spawn,          SHCMD("playerctl play-pause") },
 	{ MODKEY,				XK_minus,			spawn,          SHCMD("playerctl play-pause") },
@@ -184,6 +185,7 @@ static Key keys[] = {
 	{ 0,					XF86XK_MonBrightnessUp,		spawn,	SHCMD("sudo light -Ar 15; pkill -RTMIN+11 dwmblocks") },
 	{ 0,					XF86XK_MonBrightnessDown,	spawn,	SHCMD("sudo light -Ur 15; pkill -RTMIN+11 dwmblocks") },
 	{ 0,					XF86XK_Calculator,	spawn,	        SHCMD("rofi -show calc -modi calc -no-show-match -no-sort") },
+	{ MODKEY,				XK_BackSpace,		spawn,			SHCMD("rofi-power") },
 	{ MODKEY,				XK_t,			    setlayout,		{.v = &layouts[0]} }, /* tile */
 	{ MODKEY|ShiftMask,		XK_t,			    setlayout,		{.v = &layouts[1]} }, /* bstack */
 	{ MODKEY,				XK_y,			    setlayout,		{.v = &layouts[2]} }, /* spiral */
