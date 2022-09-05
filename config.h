@@ -61,11 +61,12 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	*/
-	/* class		instance	title		tags mask	iscentered	isfloating	isterminal  noswallow  monitor */
-	{ "Steam",		NULL,       NULL,		0,          1,          1,          -1 },
-	{ "Steam",		NULL,       "Steam",	0,          0,          0,          -1 },
-	{ "Peek",		NULL,		"Peek",     0,          1,          1,          -1 },
-	{ "FloatingTerminal",NULL,	NULL,		0,          1,          1,          1 },
+	/* class			  instance	title				tags mask	iscentered	isfloating	isterminal  noswallow  monitor */
+	{ "Steam",				NULL,   NULL,					0,          1,          1,          -1 },
+	{ "Steam",				NULL,   "Steam",				0,          0,          0,          -1 },
+	{ "Peek",				NULL,	"Peek",					0,          1,          1,          -1 },
+	{ "firefox",			NULL,	"Picture-in-Picture",   0,          1,          1,          -1 },
+	{ "FloatingTerminal",	NULL,	NULL,					0,          1,          1,           1 },
 };
 
 /* layout(s) */
@@ -160,7 +161,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,		XK_q,			    quit,			{0} },
 	{ MODKEY,				XK_w,			    spawn,			SHCMD("gtk-launch $(xdg-settings get default-web-browser)") },
 	{ MODKEY|ShiftMask,		XK_w,			    spawn,			SHCMD("rofi-wifi") },
-	{ MODKEY,				XK_e,			    spawn,			SHCMD("rofimoji") },
+	{ MODKEY,				XK_e,			    spawn,			SHCMD("rofimoji -a print | tr -d '\n' | xclip -selection clipboard") },
 	{ MODKEY,				XK_r,			    spawn,			SHCMD(TERMINAL " -e lfub") },
 	{ MODKEY|ShiftMask,		XK_r,			    spawn,			SHCMD("nemo") },
 	{ MODKEY,				XK_space,		    spawn,          SHCMD("rofi -show drun") },
