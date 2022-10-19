@@ -165,6 +165,7 @@ static Key keys[] = {
 	{ MODKEY,				XK_r,			    spawn,			SHCMD(TERMINAL " -e lfub") },
 	{ MODKEY|ShiftMask,		XK_r,			    spawn,			SHCMD("nemo") },
 	{ MODKEY,				XK_space,		    spawn,          SHCMD("rofi -show drun") },
+	{ MODKEY,				XK_Alt_L,		    spawn,          SHCMD("rofi -show window") },
 	{ MODKEY|ShiftMask,		XK_s,				spawn,          SHCMD("flameshot gui") },
 	{ 0,					XK_Print,			spawn,          SHCMD("flameshot gui") },
 	{ ShiftMask,			XK_Alt_L,			spawn,          SHCMD("toggle-kb-layout us fi") },
