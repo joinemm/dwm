@@ -784,7 +784,6 @@ clientmessage(XEvent *e)
 			view(&a);
 			focus(c);
 			restack(selmon);
-			seturgent(c, 1);
 		}
 	}
 }
