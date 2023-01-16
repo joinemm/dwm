@@ -163,7 +163,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,		XK_w,			    spawn,			SHCMD("rofi-wifi") },
 	{ MODKEY,				XK_e,			    spawn,			SHCMD("rofimoji -a print | tr -d '\n' | xclip -selection clipboard") },
 	{ MODKEY,				XK_r,			    spawn,			SHCMD(TERMINAL " -e lfub") },
-	{ MODKEY|ShiftMask,		XK_r,			    spawn,			SHCMD("nemo") },
+	{ MODKEY|ShiftMask,		XK_r,			    spawn,			SHCMD("spacefm") },
 	{ MODKEY,				XK_space,		    spawn,          SHCMD("rofi -show drun") },
 	{ MODKEY,				XK_Alt_L,		    spawn,          SHCMD("rofi -show window") },
 	{ MODKEY|ShiftMask,		XK_s,				spawn,          SHCMD("flameshot gui") },
@@ -187,7 +187,7 @@ static Key keys[] = {
 	{ 0,					XF86XK_MonBrightnessUp,		spawn,	SHCMD("sudo light -Ar 15; pkill -RTMIN+11 dwmblocks") },
 	{ 0,					XF86XK_MonBrightnessDown,	spawn,	SHCMD("sudo light -Ur 15; pkill -RTMIN+11 dwmblocks") },
 	{ 0,					XF86XK_Calculator,	spawn,	        SHCMD("rofi -show calc -modi calc -no-show-match -no-sort") },
-	{ MODKEY,				XK_BackSpace,		spawn,			SHCMD("rofi-power") },
+	{ MODKEY|ShiftMask,		XK_BackSpace,		spawn,			SHCMD("rofi-power") },
 	{ MODKEY,				XK_t,			    setlayout,		{.v = &layouts[0]} }, /* tile */
 	{ MODKEY|ShiftMask,		XK_t,			    setlayout,		{.v = &layouts[1]} }, /* bstack */
 	{ MODKEY,				XK_y,			    setlayout,		{.v = &layouts[2]} }, /* spiral */
