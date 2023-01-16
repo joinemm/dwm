@@ -123,7 +123,7 @@ ResourcePref resources[] = {
 	{ "selbordercolor",	STRING,	 &selbordercolor },
 	{ "background",		STRING,	 &normbgcolor },
 	{ "foreground",		STRING,	 &normfgcolor },
-	{ "foreground",		STRING,	 &selfgcolor },
+	{ "selfgcolor",		STRING,	 &selfgcolor },
 	{ "selbgcolor",		STRING,  &selbgcolor },
 	{ "borderpx",		INTEGER, &borderpx },
 	{ "snap",			INTEGER, &snap },
