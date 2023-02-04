@@ -184,8 +184,8 @@ static Key keys[] = {
 	{ 0,                    XF86XK_AudioMute,	spawn,			SHCMD("audio-control mute") },
 	{ 0,                    XF86XK_AudioRaiseVolume,	spawn,	SHCMD("audio-control up 1%") },
 	{ 0,                    XF86XK_AudioLowerVolume,	spawn,	SHCMD("audio-control down 1%") },
-	{ 0,					XF86XK_MonBrightnessUp,		spawn,	SHCMD("sudo light -Ar 15; pkill -RTMIN+11 dwmblocks") },
-	{ 0,					XF86XK_MonBrightnessDown,	spawn,	SHCMD("sudo light -Ur 15; pkill -RTMIN+11 dwmblocks") },
+	{ 0,					XF86XK_MonBrightnessUp,		spawn,	SHCMD("sudo light -A 10; pkill -RTMIN+11 dwmblocks") },
+	{ 0,					XF86XK_MonBrightnessDown,	spawn,	SHCMD("sudo light -U 10; pkill -RTMIN+11 dwmblocks") },
 	{ 0,					XF86XK_Calculator,	spawn,	        SHCMD("rofi -show calc -modi calc -no-show-match -no-sort") },
 	{ MODKEY|ShiftMask,		XK_BackSpace,		spawn,			SHCMD("rofi-power") },
 	{ MODKEY,				XK_t,			    setlayout,		{.v = &layouts[0]} }, /* tile */
