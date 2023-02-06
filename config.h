@@ -1,8 +1,8 @@
 /* See LICENSE file for copyright and license details. */
 
 /* Constants */
-#define TERMINAL "alacritty"
-#define TERMCLASS "Alacritty"
+#define TERMINAL "kitty"
+#define TERMCLASS "Kitty"
 
 /* appearance */
 static unsigned int borderpx    = 3;        /* border pixel of windows */
@@ -23,7 +23,8 @@ static int topbar               = 1;        /* 0 means bottom bar */
 static char *fonts[]            = {
 	"monospace:size=12",
 	"Twemoji:size=12",
-	"Feather Icons:size=12",
+	"Twitter Color Emoji:size=12",
+	"Material Icons:size=14",
 };
 static char normbgcolor[]		= "#222222";
 static char normbordercolor[]   = "#444444";
@@ -159,7 +160,7 @@ static Key keys[] = {
 	{ MODKEY,				XK_0,			    view,			{.ui = ~0 } },
 	{ MODKEY,				XK_q,			    killclient,		{0} },
 	{ MODKEY|ShiftMask,		XK_q,			    quit,			{0} },
-	{ MODKEY,				XK_w,			    spawn,			SHCMD("gtk-launch $(xdg-settings get default-web-browser)") },
+	{ MODKEY,				XK_w,			    spawn,			SHCMD("firefox") },
 	{ MODKEY|ShiftMask,		XK_w,			    spawn,			SHCMD("rofi-wifi") },
 	{ MODKEY,				XK_e,			    spawn,			SHCMD("rofimoji -a print | tr -d '\n' | xclip -selection clipboard") },
 	{ MODKEY,				XK_r,			    spawn,			SHCMD(TERMINAL " -e lfub") },
