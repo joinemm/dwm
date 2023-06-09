@@ -80,7 +80,7 @@ static int resizehints = 1;		/* 1 means respect size hints in tiled resizals */
 /* first layout is the default */
 static const Layout layouts[] = {
 	/* symbol   arrange function */
-	{ "[]=",	tile },						/* Default: Master on left, slaves on right */
+	{ "[|M|]",	centeredmaster },			/* Master in middle, slaves on sides */
 	{ "[B]",	bstack },					/* Master on top, slaves on bottom */
 
 	{ "[@]",	spiral },					/* Fibonacci spiral */
@@ -89,7 +89,7 @@ static const Layout layouts[] = {
 	{ "[D]",	deck },						/* Master on left, slaves in monocle-like mode on right */
  	{ "[M]",	monocle },					/* All windows on top of eachother */
 
-	{ "[|M|]",	centeredmaster },			/* Master in middle, slaves on sides */
+	{ "[]=",	tile },						/* Default: Master on left, slaves on right */
 	{ ">M>",	centeredfloatingmaster },	/* Same as centeredmaster but master floats */
 
 	{ "><>",	NULL },                     /* no layout function means floating behavior */
