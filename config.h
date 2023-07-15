@@ -198,6 +198,7 @@ static Key keys[] = {
 	{ MODKEY,				XK_i,			    setlayout,		{.v = &layouts[6]} }, /* centeredmaster */
 	{ MODKEY|ShiftMask,		XK_i,			    setlayout,		{.v = &layouts[7]} }, /* centeredfloatingmaster */
 	{ MODKEY|ShiftMask,		XK_o,			    setlayout,		{.v = &layouts[8]} }, /* floating */
+	{ MODKEY,				XK_n,			    spawn,          SHCMD(TERMINAL " -e ncmpcpp") },
 	{ MODKEY,				XK_m,			    incnmaster,     {.i = +1 } },
 	{ MODKEY|ShiftMask,		XK_m,			    incnmaster,     {.i = -1 } },
 	{ MODKEY,				XK_g,			    togglegaps,		{0} },
