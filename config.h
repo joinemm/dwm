@@ -55,7 +55,7 @@ static const int statmonval = 0;
 static const int user_bh = 32;
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+static const char *tags[] = { "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "XI" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -71,7 +71,7 @@ static const Rule rules[] = {
 };
 
 /* layout(s) */
-static float mfact     = 0.5;	/* factor of master area size [0.05..0.95] */
+static float mfact     = 0.618;	/* factor of master area size [0.05..0.95] */
 static int nmaster     = 1;		/* number of clients in master area */
 static int resizehints = 1;		/* 1 means respect size hints in tiled resizals */
 #define FORCE_VSPLIT 0			/* nrowgrid layout: force two clients to always split vertically */
@@ -80,18 +80,10 @@ static int resizehints = 1;		/* 1 means respect size hints in tiled resizals */
 /* first layout is the default */
 static const Layout layouts[] = {
 	/* symbol   arrange function */
+	{ "[@]",	spiral },					/* Fibonacci spiral */
 	{ "[|M|]",	centeredmaster },			/* Master in middle, slaves on sides */
 	{ "[B]",	bstack },					/* Master on top, slaves on bottom */
-
-	{ "[@]",	spiral },					/* Fibonacci spiral */
-	{ "[\\]",	dwindle },					/* Decreasing in size right and leftward */
-
 	{ "[D]",	deck },						/* Master on left, slaves in monocle-like mode on right */
- 	{ "[M]",	monocle },					/* All windows on top of eachother */
-
-	{ "[]=",	tile },						/* Default: Master on left, slaves on right */
-	{ ">M>",	centeredfloatingmaster },	/* Same as centeredmaster but master floats */
-
 	{ "><>",	NULL },                     /* no layout function means floating behavior */
 	{ NULL,		NULL },
 };
@@ -165,64 +157,61 @@ static Key keys[] = {
 	{ MODKEY,				XK_e,			    spawn,			SHCMD("rofimoji -a print | tr -d '\n' | xclip -selection clipboard") },
 	{ MODKEY,				XK_r,			    spawn,			SHCMD(TERMINAL " -e lfub") },
 	{ MODKEY|ShiftMask,		XK_r,			    spawn,			SHCMD("$FM") },
-	{ MODKEY,				XK_space,		    spawn,          SHCMD("rofi -show drun") },
-	{ MODKEY,				XK_Alt_L,		    spawn,          SHCMD("rofi -show window") },
 	{ MODKEY|ShiftMask,		XK_s,				spawn,          SHCMD("flameshot gui") },
-	{ 0,					XK_Print,			spawn,          SHCMD("flameshot gui") },
-	{ ShiftMask,			XK_Alt_L,			spawn,          SHCMD("toggle-kb-layout us fi") },
-	{ Mod1Mask,				XK_Shift_L,			spawn,          SHCMD("toggle-kb-layout us fi") },
 	{ MODKEY,				XK_p,				spawn,          SHCMD("rofi-screencast") },
 	{ MODKEY,				XK_c,				spawn,          SHCMD("color") },
 	{ MODKEY,				XK_b,				spawn,          SHCMD("rofi-bluetooth") },
 	{ MODKEY,				XK_l,				spawn,          SHCMD("lock") },
-	{ MODKEY,				XK_slash,			spawn,          SHCMD("playerctl play-pause") },
-	{ MODKEY,				XK_minus,			spawn,          SHCMD("playerctl play-pause") },
-	{ MODKEY,				XK_comma,			spawn,          SHCMD("playerctl previous") },
-	{ MODKEY,				XK_period,			spawn,          SHCMD("playerctl next") },
-	{ 0,                    XF86XK_AudioPlay,	spawn,			SHCMD("playerctl play-pause") },
-	{ 0,					XF86XK_AudioPrev,   spawn,			SHCMD("playerctl previous") },
-	{ 0,                    XF86XK_AudioNext,	spawn,			SHCMD("playerctl next") },
-	{ 0,                    XF86XK_AudioMute,	spawn,			SHCMD("audio-control mute") },
-	{ 0,                    XF86XK_AudioRaiseVolume,	spawn,	SHCMD("audio-control up 1%") },
-	{ 0,                    XF86XK_AudioLowerVolume,	spawn,	SHCMD("audio-control down 1%") },
-	{ 0,					XF86XK_MonBrightnessUp,		spawn,	SHCMD("sudo light -A 10; pkill -RTMIN+11 dwmblocks") },
-	{ 0,					XF86XK_MonBrightnessDown,	spawn,	SHCMD("sudo light -U 10; pkill -RTMIN+11 dwmblocks") },
-	{ 0,					XF86XK_Calculator,	spawn,	        SHCMD("rofi -show calc -modi calc -no-show-match -no-sort") },
-	{ MODKEY|ShiftMask,		XK_BackSpace,		spawn,			SHCMD("rofi-power") },
-	{ MODKEY,				XK_t,			    setlayout,		{.v = &layouts[0]} }, /* tile */
-	{ MODKEY|ShiftMask,		XK_t,			    setlayout,		{.v = &layouts[1]} }, /* bstack */
-	{ MODKEY,				XK_y,			    setlayout,		{.v = &layouts[2]} }, /* spiral */
-	{ MODKEY|ShiftMask,		XK_y,			    setlayout,		{.v = &layouts[3]} }, /* dwindle */
-	{ MODKEY,				XK_u,			    setlayout,		{.v = &layouts[4]} }, /* deck */
-	{ MODKEY|ShiftMask,		XK_u,			    setlayout,		{.v = &layouts[5]} }, /* monocle */
-	{ MODKEY,				XK_i,			    setlayout,		{.v = &layouts[6]} }, /* centeredmaster */
-	{ MODKEY|ShiftMask,		XK_i,			    setlayout,		{.v = &layouts[7]} }, /* centeredfloatingmaster */
-	{ MODKEY|ShiftMask,		XK_o,			    setlayout,		{.v = &layouts[8]} }, /* floating */
-	{ MODKEY,				XK_n,			    spawn,          SHCMD(TERMINAL " -e ncmpcpp") },
+    { MODKEY,				XK_n,			    spawn,          SHCMD(TERMINAL " -e ncmpcpp") },
 	{ MODKEY,				XK_m,			    incnmaster,     {.i = +1 } },
 	{ MODKEY|ShiftMask,		XK_m,			    incnmaster,     {.i = -1 } },
 	{ MODKEY,				XK_g,			    togglegaps,		{0} },
 	{ MODKEY|ShiftMask,		XK_g,			    defaultgaps,	{0} },
 	{ MODKEY,				XK_s,			    togglesticky,	{0} },
-	{ MODKEY|ShiftMask,		XK_h,			    setmfact,		{.f = -0.05} },
-	{ MODKEY|ShiftMask,		XK_l,			    setmfact,		{.f = +0.05} },
+	{ MODKEY|ShiftMask,		XK_h,			    setmfact,		{.f = -0.059} },
+	{ MODKEY|ShiftMask,		XK_l,			    setmfact,		{.f = +0.059} },
 	{ MODKEY,				XK_f,			    zoom,			{0} },
 	{ MODKEY|ShiftMask,		XK_f,			    togglefullscr,	{0} },
-	{ MODKEY,				XK_Tab,			    view,			{0} },
+	{ MODKEY,				XK_z,			    incrgaps,		{.i = +5 } },
+	{ MODKEY,				XK_x,			    incrgaps,		{.i = -5 } },
+	{ MODKEY|ShiftMask,		XK_b,			    togglebar,		{0} },
 	{ MODKEY,				XK_semicolon,	    shiftview,		{ .i = 1 } },
 	{ MODKEY|ShiftMask,		XK_semicolon,	    shifttag,		{ .i = 1 } },
 	{ MODKEY,				XK_apostrophe,	    shiftview,		{ .i = -1 } },
 	{ MODKEY|ShiftMask,		XK_apostrophe,	    shifttag,		{ .i = -1 } },
-	{ MODKEY,				XK_Return,		    spawn,			{.v = termcmd } },
-	{ MODKEY|ShiftMask,		XK_Return,		    togglescratch,	{.ui = 0 } },
-	{ MODKEY,				XK_z,			    incrgaps,		{.i = +3 } },
-	{ MODKEY,				XK_x,			    incrgaps,		{.i = -3 } },
-	{ MODKEY|ShiftMask,		XK_b,			    togglebar,		{0} },
+    { MODKEY,				XK_slash,			spawn,          SHCMD("playerctl play-pause") },
+	{ MODKEY,				XK_minus,			spawn,          SHCMD("playerctl play-pause") },
+	{ MODKEY,				XK_comma,			spawn,          SHCMD("playerctl previous") },
+	{ MODKEY,				XK_period,			spawn,          SHCMD("playerctl next") },
 	{ MODKEY,				XK_bracketleft,	    focusmon,		{.i = -1 } },
 	{ MODKEY,				XK_bracketright,    focusmon,		{.i = +1 } },
 	{ MODKEY|ShiftMask,		XK_bracketleft,	    tagmon,			{.i = -1 } },
 	{ MODKEY|ShiftMask,		XK_bracketright,    tagmon,			{.i = +1 } },
+	{ MODKEY,				XK_Tab,			    view,			{0} },
 	{ MODKEY|ShiftMask,		XK_space,		    togglefloating,	{0} },
+	{ MODKEY,				XK_space,		    spawn,          SHCMD("rofi -show drun") },
+	{ MODKEY|ShiftMask,		XK_BackSpace,		spawn,			SHCMD("rofi-power") },
+	{ MODKEY,				XK_Return,		    spawn,			{.v = termcmd } },
+	{ MODKEY|ShiftMask,		XK_Return,		    togglescratch,	{.ui = 0 } },
+    { MODKEY,				XK_Alt_L,		    spawn,          SHCMD("rofi -show window") },
+	{ ShiftMask,			XK_Alt_L,			spawn,          SHCMD("toggle-kb-layout us fi") },
+	{ Mod1Mask,				XK_Shift_L,			spawn,          SHCMD("toggle-kb-layout us fi") },
+    { 0,			        XK_Print,			spawn,          SHCMD("flameshot gui") },
+	{ MODKEY,				XK_F1,			    setlayout,		{.v = &layouts[0]} },
+	{ MODKEY,		        XK_F2,			    setlayout,		{.v = &layouts[1]} },
+	{ MODKEY,				XK_F3,			    setlayout,		{.v = &layouts[2]} },
+	{ MODKEY,		        XK_F4,			    setlayout,		{.v = &layouts[3]} },
+	{ MODKEY,				XK_F5,			    setlayout,		{.v = &layouts[4]} },
+	{ MODKEY,		        XK_F6,			    setlayout,		{.v = &layouts[5]} },
+    { 0,            XF86XK_AudioPlay,           spawn,			SHCMD("playerctl play-pause") },
+    { 0,			XF86XK_AudioPrev,           spawn,			SHCMD("playerctl previous") },
+    { 0,            XF86XK_AudioNext,           spawn,			SHCMD("playerctl next") },
+    { 0,            XF86XK_AudioMute,           spawn,			SHCMD("audio-control mute") },
+    { 0,            XF86XK_AudioRaiseVolume,    spawn,	        SHCMD("audio-control up 1%") },
+    { 0,            XF86XK_AudioLowerVolume,    spawn,	        SHCMD("audio-control down 1%") },
+    { 0,			XF86XK_MonBrightnessUp,     spawn,	        SHCMD("sudo light -A 10; pkill -RTMIN+11 dwmblocks") },
+    { 0,			XF86XK_MonBrightnessDown,   spawn,	        SHCMD("sudo light -U 10; pkill -RTMIN+11 dwmblocks") },
+    { 0,			XF86XK_Calculator,          spawn,	        SHCMD("rofi -show calc -modi calc -no-show-match -no-sort") },
 };
 
 /* button definitions */
