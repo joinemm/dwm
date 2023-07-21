@@ -55,7 +55,7 @@ static const int statmonval = 0;
 static const int user_bh = 32;
 
 /* tagging */
-static const char *tags[] = { "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "XI" };
+static const char *tags[] = { "1", "2", "3", "5", "6", "7", "8", "9", "10" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -71,7 +71,7 @@ static const Rule rules[] = {
 };
 
 /* layout(s) */
-static float mfact     = 0.618;	/* factor of master area size [0.05..0.95] */
+static float mfact     = 0.5;	/* factor of master area size [0.05..0.95] */
 static int nmaster     = 1;		/* number of clients in master area */
 static int resizehints = 1;		/* 1 means respect size hints in tiled resizals */
 #define FORCE_VSPLIT 0			/* nrowgrid layout: force two clients to always split vertically */
@@ -168,8 +168,8 @@ static Key keys[] = {
 	{ MODKEY,				XK_g,			    togglegaps,		{0} },
 	{ MODKEY|ShiftMask,		XK_g,			    defaultgaps,	{0} },
 	{ MODKEY,				XK_s,			    togglesticky,	{0} },
-	{ MODKEY|ShiftMask,		XK_h,			    setmfact,		{.f = -0.059} },
-	{ MODKEY|ShiftMask,		XK_l,			    setmfact,		{.f = +0.059} },
+	{ MODKEY|ShiftMask,		XK_h,			    setmfact,		{.f = -0.05} },
+	{ MODKEY|ShiftMask,		XK_l,			    setmfact,		{.f = +0.05} },
 	{ MODKEY,				XK_f,			    zoom,			{0} },
 	{ MODKEY|ShiftMask,		XK_f,			    togglefullscr,	{0} },
 	{ MODKEY,				XK_z,			    incrgaps,		{.i = +5 } },
