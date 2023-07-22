@@ -55,7 +55,7 @@ static const int statmonval = 0;
 static const int user_bh = 32;
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "5", "6", "7", "8", "9", "10" };
+static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
 static const Rule rules[] = {
 	/* xprop(1):
