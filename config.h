@@ -1,8 +1,8 @@
 /* See LICENSE file for copyright and license details. */
 
 /* Constants */
-#define TERMINAL "kitty"
-#define TERMCLASS "Kitty"
+#define TERMINAL "wezterm"
+#define TERMCLASS "Wezterm"
 
 /* appearance */
 static unsigned int borderpx    = 3;        /* border pixel of windows */
