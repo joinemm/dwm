@@ -83,7 +83,7 @@ static const Layout layouts[] = {
 	{ "[@]",	spiral },					/* Fibonacci spiral */
 	{ "[|M|]",	centeredmaster },			/* Master in middle, slaves on sides */
 	{ "[B]",	bstack },					/* Master on top, slaves on bottom */
-	{ "[D]",	deck },						/* Master on left, slaves in monocle-like mode on right */
+	{ "[][]=",	tilewide },					/* Tile but possible to have two masters */
 	{ "><>",	NULL },                     /* no layout function means floating behavior */
 	{ NULL,		NULL },
 };
