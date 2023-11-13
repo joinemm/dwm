@@ -194,8 +194,6 @@ static Key keys[] = {
 	{ MODKEY,				XK_Return,		    spawn,			{.v = termcmd } },
 	{ MODKEY|ShiftMask,		XK_Return,		    togglescratch,	{.ui = 0 } },
     { MODKEY,				XK_Alt_L,		    spawn,          SHCMD("rofi -show window") },
-	{ ShiftMask,			XK_Alt_L,			spawn,          SHCMD("toggle-kb-layout us fi") },
-	{ Mod1Mask,				XK_Shift_L,			spawn,          SHCMD("toggle-kb-layout us fi") },
     { 0,			        XK_Print,			spawn,          SHCMD("flameshot gui") },
 	{ MODKEY,				XK_F1,			    setlayout,		{.v = &layouts[0]} },
 	{ MODKEY,		        XK_F2,			    setlayout,		{.v = &layouts[1]} },
